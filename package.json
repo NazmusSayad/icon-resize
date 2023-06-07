@@ -1,9 +1,9 @@
 {
-  "name": "resize-icon",
+  "name": "resize-svg",
+  "version": "0.0.3",
   "scripts": {
     "dev": "node main.js"
   },
-  "version": "0.0.3",
   "type": "module",
   "bin": "./bin.js",
   "dependencies": {
