@@ -32,7 +32,7 @@ fs.readdirSync(inputDir)
         [type]({ quality: 100 })
         .toFile(outputFile)
 
-      console.log('Finish:', fileName)
+      console.log(fileName)
     }
 
     types.forEach((type) => sizes.forEach((size) => createFile(type, size)))
