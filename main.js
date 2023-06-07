@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
+import { cleanDirSync } from './utils.js'
 
 const regex = /\.svg$/
 const types = ['jpeg', 'png', 'webp', 'tiff']
@@ -13,9 +14,7 @@ const sizes = [
 
 const inputDir = path.resolve(process.argv[2] ?? './input')
 const outputDir = path.resolve(process.argv[3] ?? './output')
-
-if (fs.existsSync(outputDir)) fs.rmSync(outputDir, { recursive: true })
-fs.mkdirSync(outputDir)
+types.forEach((type) => cleanDirSync(path.join(outputDir, type)))
 
 fs.readdirSync(inputDir)
   .filter((svg) => regex.test(svg))
@@ -25,7 +24,7 @@ fs.readdirSync(inputDir)
 
     async function createFile(type, size) {
       const fileName = `${base}-${size}.${type}`
-      const outputFile = path.join(outputDir, fileName)
+      const outputFile = path.join(outputDir, type, fileName)
 
       await sharp(input)
         .resize({ width: size })

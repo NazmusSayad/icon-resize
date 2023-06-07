@@ -1,6 +1,9 @@
 {
   "name": "resize-icon",
-  "version": "0.0.2",
+  "scripts": {
+    "dev": "node main.js"
+  },
+  "version": "0.0.3",
   "type": "module",
   "bin": "./bin.js",
   "dependencies": {
